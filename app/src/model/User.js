@@ -9,15 +9,19 @@ class User {
 
   async login() {
     const client = this.body;
-    const { id, password } = await UserStorage.getUserInfo(client.id);
+    try {
+      const { id, password } = await UserStorage.getUserInfo(client.id);
 
-    if (id) {
-      if (id === client.id && password === client.password) {
-        return { success: true };
+      if (id) {
+        if (id === client.id && password === client.password) {
+          return { success: true };
+        }
+        return { success: false, msg: "비밀번호가 일치하지 않음" };
       }
-      return { success: false, msg: "비밀번호가 일치하지 않음" };
+      return { success: false, msg: "아이디가 존재하지 않음" };
+    } catch (err) {
+      return { success: false, msg: err };
     }
-    return { success: false, msg: "아이디가 존재하지 않음" };
   }
 
   async register() {

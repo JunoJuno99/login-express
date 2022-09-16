@@ -2,8 +2,8 @@
 
 const app = require("../app");
 
-const PORT = 3000; // 포트
+const PORT = process.env.PORT || 3000; // 포트
 
 app.listen(PORT, () => {
-    console.log("서버 가동");
+  console.log("서버 가동");
 });
