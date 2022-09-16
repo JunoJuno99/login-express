@@ -1,8 +1,8 @@
 "use strict";
 
 class UserStorage {
+  // # -> private 변수 처리
   static #users = {
-    // # -> private 변수 처리
     id: ["juno"],
     password: ["1234"],
     name: ["준호"],
@@ -27,6 +27,14 @@ class UserStorage {
       return userData;
     }, {});
     return userInfo;
+  }
+
+  static save(userInfo) {
+    const users = this.#users;
+    users.name.push(userInfo.name);
+    users.id.push(userInfo.id);
+    users.password.push(userInfo.password);
+    return { success: true };
   }
 }
 
