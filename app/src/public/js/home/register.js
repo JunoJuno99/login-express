@@ -32,6 +32,7 @@ const register = () => {
       if (json.success) {
         location.href = "/login";
       } else {
+        if (json.err) return alert(json.err);
         alert(json.msg);
       }
     })

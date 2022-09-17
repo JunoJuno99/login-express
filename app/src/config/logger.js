@@ -39,4 +39,8 @@ if (process.env.NODE_ENV !== "production") {
   logger.add(opts.console);
 }
 
+// logger.stream = {
+//   write: (message) => logger.info(message),
+// }; // morgan에 전달
+
 module.exports = logger;

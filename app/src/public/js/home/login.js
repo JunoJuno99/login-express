@@ -4,6 +4,9 @@ const id = document.querySelector("#id");
 const password = document.querySelector("#password");
 const loginBtn = document.querySelector("a");
 const login = () => {
+  if (!id.value) return alert("아이디를 입력하세요.");
+  if (!password.value) return alert("비밀번호를 입력하세요");
+
   const req = {
     id: id.value,
     password: password.value,
@@ -21,6 +24,7 @@ const login = () => {
       if (json.success) {
         location.href = "/";
       } else {
+        if (json.err) return alert(json.err);
         alert(json.msg);
       }
     })
